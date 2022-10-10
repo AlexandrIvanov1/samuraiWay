@@ -1,0 +1,9 @@
+.post {
+    color: #9c6e39;
+    padding-bottom: 10px;
+}
+.post img {
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
