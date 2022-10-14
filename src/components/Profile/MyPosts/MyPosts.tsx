@@ -1,18 +1,27 @@
 import React from 'react';
 import c from './MyPosts.module.css'
-import {Post} from "./Post/Post";
+import {Post, PostType} from "./Post/Post";
 
 export const MyPosts = () => {
+
+    const postsData: Array<PostType> = [
+        {id: '1', message: 'Hello, how are you?', likesCount: 4},
+        {id: '2', message: 'It\'s my first post?', likesCount: 15}
+    ]
+
     return (
         <div className={c.content}>
-            My posts
+            <h3>My posts</h3>
             <div>
-                <textarea/>
-                <button>Add post</button>
+                <div>
+                    <textarea/>
+                </div>
+                <div>
+                    <button>Add post</button>
+                </div>
             </div>
             <div className={c.posts}>
-                <Post message={'Hello, how are you?'} likesCount={4}/>
-                <Post message={'It\'s my first post'} likesCount={15}/>
+                {postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)}
             </div>
         </div>
     )
