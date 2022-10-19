@@ -3,7 +3,7 @@ import c from './MyPosts.module.css'
 import {Post, PostType} from "./Post/Post";
 
 type MyPostType = {
-    data: Array<PostType>
+    postsData: Array<PostType>
 }
 
 export const MyPosts: React.FC<MyPostType> = (props) => {
@@ -20,7 +20,7 @@ export const MyPosts: React.FC<MyPostType> = (props) => {
                 </div>
             </div>
             <div className={c.posts}>
-                {props.data.map(p => <Post message={p.message} likesCount={p.likesCount}/>)}
+                {props.postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)}
             </div>
         </div>
     )
