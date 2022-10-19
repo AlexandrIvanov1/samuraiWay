@@ -2,12 +2,11 @@ import React from 'react';
 import c from './MyPosts.module.css'
 import {Post, PostType} from "./Post/Post";
 
-export const MyPosts = () => {
+type MyPostType = {
+    data: Array<PostType>
+}
 
-    const postsData: Array<PostType> = [
-        {id: '1', message: 'Hello, how are you?', likesCount: 4},
-        {id: '2', message: 'It\'s my first post?', likesCount: 15}
-    ]
+export const MyPosts: React.FC<MyPostType> = (props) => {
 
     return (
         <div className={c.content}>
@@ -17,11 +16,11 @@ export const MyPosts = () => {
                     <textarea/>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button className={c.addPost}>Add post</button>
                 </div>
             </div>
             <div className={c.posts}>
-                {postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)}
+                {props.data.map(p => <Post message={p.message} likesCount={p.likesCount}/>)}
             </div>
         </div>
     )
