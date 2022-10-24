@@ -57,3 +57,12 @@ export const state: RootStateType = {
         {id: '2', name: 'Denis', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'},
     ]
 }
+
+
+export const addPost = (message: string) => {
+    debugger
+    const newPost: PostType = {
+        id: '3', message, likesCount: 0
+    }
+    state.profilePage.postsData.push(newPost)
+}

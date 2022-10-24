@@ -7,6 +7,7 @@ type ProfileType = {
     state: {
         postsData: Array<PostType>
     }
+    addPost: (message: string) => void
 }
 
 export const Profile: React.FC<ProfileType> = (props) => {
@@ -14,7 +15,7 @@ export const Profile: React.FC<ProfileType> = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts postsData={props.state.postsData}/>
+            <MyPosts postsData={props.state.postsData} addPost={props.addPost}/>
         </div>
     )
 }
