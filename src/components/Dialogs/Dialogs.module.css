@@ -36,3 +36,22 @@
 .message {
 
 }
+
+.addMessageBlock {
+    padding: 10px;
+}
+
+.addMessage {
+    width: 70px;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid black;
+    transition: all .4s;
+    border-radius: 5px;
+}
+.addMessage:hover {
+    background-color: #7e57c2;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
