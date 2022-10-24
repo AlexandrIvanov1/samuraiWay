@@ -1,13 +1,10 @@
 import React from 'react';
 import c from './../Dialogs.module.css'
 import {NavLink} from "react-router-dom";
+import {DialogType} from "../../../redux/state";
 
-export type DialogItemType = {
-    id: string
-    name: string
-}
 
-export function DialogItem(props: DialogItemType) {
+export function DialogItem(props: DialogType) {
     return (
         <div className={c.item}>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU" alt=""/>

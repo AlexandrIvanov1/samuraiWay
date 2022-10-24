@@ -1,11 +1,12 @@
 import React from 'react';
 import c from './Dialogs.module.css'
-import {DialogItem, DialogItemType} from "./DialogItem/DialogItem";
-import {Message, MessageType} from "./Message/Message";
+import {DialogItem} from "./DialogItem/DialogItem";
+import {Message} from "./Message/Message";
+import {DialogType, MessageType} from "../../redux/state";
 
 type DialogsType = {
     state: {
-        dialogsData: Array<DialogItemType>
+        dialogsData: Array<DialogType>
         messagesData: Array<MessageType>
     }
 }
@@ -25,7 +26,7 @@ export function Dialogs(props: DialogsType) {
                 {props.state.dialogsData.map(d => <DialogItem id={d.id} name={d.name} />)}
             </div>
             <div className={c.messages}>
-                {props.state.messagesData.map(m => <Message message={m.message}/>)}
+                {props.state.messagesData.map(m => <Message id={m.id} message={m.message}/>)}
             </div>
             <div className={c.addMessageBlock}>
                 <div>

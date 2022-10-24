@@ -1,18 +1,21 @@
-import {PostType} from "../components/Profile/MyPosts/Post/Post";
-import {DialogItemType} from "../components/Dialogs/DialogItem/DialogItem";
-import {MessageType} from "../components/Dialogs/Message/Message";
-
-export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogsPageType
-    sidebar: Array<SidebarType>
-
+export type MessageType = {
+    id: string
+    message: string
+}
+export type DialogType = {
+    id: string
+    name: string
+}
+export type PostType = {
+    id: string
+    message: string
+    likesCount: number
 }
 type ProfilePageType = {
     postsData: Array<PostType>
 }
 type DialogsPageType = {
-    dialogsData: Array<DialogItemType>
+    dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
 }
 export type SidebarType = {
@@ -20,6 +23,13 @@ export type SidebarType = {
     name: string
     avatar: string
 }
+
+export type RootStateType = {
+    profilePage: ProfilePageType
+    dialogsPage: DialogsPageType
+    sidebar: Array<SidebarType>
+}
+
 
 export const state: RootStateType = {
     profilePage: {
@@ -46,5 +56,4 @@ export const state: RootStateType = {
         {id: '1', name: 'Kirill', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'},
         {id: '2', name: 'Denis', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'},
     ]
-
 }

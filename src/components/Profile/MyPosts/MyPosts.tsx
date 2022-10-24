@@ -1,6 +1,7 @@
 import React from 'react';
 import c from './MyPosts.module.css'
-import {Post, PostType} from "./Post/Post";
+import {Post} from "./Post/Post";
+import {PostType} from "../../../redux/state";
 
 type MyPostType = {
     postsData: Array<PostType>
@@ -27,7 +28,7 @@ export const MyPosts: React.FC<MyPostType> = (props) => {
                 </div>
             </div>
             <div className={c.posts}>
-                {props.postsData.map((p, i) => <Post key={i} message={p.message} likesCount={p.likesCount}/>)}
+                {props.postsData.map((p, i) => <Post key={i} id={p.id} message={p.message} likesCount={p.likesCount}/>)}
             </div>
         </div>
     )
