@@ -4,7 +4,9 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {PostType} from "./MyPosts/Post/Post";
 
 type ProfileType = {
-    postsData: Array<PostType>
+    state: {
+        postsData: Array<PostType>
+    }
 }
 
 export const Profile: React.FC<ProfileType> = (props) => {
@@ -12,7 +14,7 @@ export const Profile: React.FC<ProfileType> = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts postsData={props.postsData}/>
+            <MyPosts postsData={props.state.postsData}/>
         </div>
     )
 }

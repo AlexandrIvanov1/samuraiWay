@@ -20,7 +20,7 @@ export const MyPosts: React.FC<MyPostType> = (props) => {
                 </div>
             </div>
             <div className={c.posts}>
-                {props.postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)}
+                {props.postsData.map((p, i) => <Post key={i} message={p.message} likesCount={p.likesCount}/>)}
             </div>
         </div>
     )
