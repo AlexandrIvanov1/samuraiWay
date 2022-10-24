@@ -1,0 +1,19 @@
+.friendsBlock {
+    padding-top: 50px;
+}
+
+span {
+    font-weight: 900;
+}
+
+.friendsBlock img {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+}
+
+.friend {
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+}

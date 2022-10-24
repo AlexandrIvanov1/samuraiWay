@@ -5,6 +5,8 @@ import {MessageType} from "../components/Dialogs/Message/Message";
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
+    sidebar: Array<SidebarType>
+
 }
 type ProfilePageType = {
     postsData: Array<PostType>
@@ -12,6 +14,11 @@ type ProfilePageType = {
 type DialogsPageType = {
     dialogsData: Array<DialogItemType>
     messagesData: Array<MessageType>
+}
+export type SidebarType = {
+    id: string
+    name: string
+    avatar: string
 }
 
 export const state: RootStateType = {
@@ -34,5 +41,10 @@ export const state: RootStateType = {
             {id: '3', message: 'What are you doing today?'},
             {id: '4', message: 'Do you play at the bass?'}
         ]
-    }
+    },
+    sidebar: [
+        {id: '1', name: 'Kirill', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'},
+        {id: '2', name: 'Denis', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'},
+    ]
+
 }
