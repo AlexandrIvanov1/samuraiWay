@@ -1,5 +1,6 @@
 import React from 'react';
 import c from './ProfileInfo.module.css'
+import img from './I.jpeg'
 
 export const ProfileInfo = () => {
     return (
@@ -10,7 +11,10 @@ export const ProfileInfo = () => {
                     alt="background"/>
             </div>
             <div className={c.descriptionBlock}>
-                avatar + description
+                <div>
+                    <img src={img} alt="avatar"/>
+                </div>
+                Hello, everyone! My name is Alex Ivanov.<br/> I am musician and frontend developer from Moscow.
             </div>
         </div>
     )
