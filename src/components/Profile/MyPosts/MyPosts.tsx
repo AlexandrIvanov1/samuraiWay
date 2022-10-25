@@ -14,10 +14,12 @@ export const MyPosts: React.FC<MyPostType> = (props) => {
 
     const addPost = () => {
         debugger
-        const text = newPostElement.current?.value
+        let text = newPostElement.current?.value
         if (text) {
             props.addPost(text)
-            console.log(props.postsData)
+            if(newPostElement.current?.value) {
+                newPostElement.current.value = ''
+            }
         }
     }
 
