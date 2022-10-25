@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import c from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/state";
@@ -6,21 +6,19 @@ import {PostType} from "../../../redux/state";
 type MyPostType = {
     postsData: Array<PostType>
     addPost: (message: string) => void
+    newPostText: string
+    updateNewPostText: (newText: string) => void
 }
 
 export const MyPosts: React.FC<MyPostType> = (props) => {
 
-    let newPostElement = React.createRef<HTMLTextAreaElement>()
-
     const addPost = () => {
-        debugger
-        let text = newPostElement.current?.value
-        if (text) {
-            props.addPost(text)
-            if(newPostElement.current?.value) {
-                newPostElement.current.value = ''
-            }
-        }
+        props.addPost(props.newPostText)
+    }
+
+    const onPostChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        const text = e.currentTarget.value
+        props.updateNewPostText(text)
     }
 
     return (
@@ -28,7 +26,10 @@ export const MyPosts: React.FC<MyPostType> = (props) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea
+                        value={props.newPostText}
+                        onChange={onPostChangeHandler}
+                    />
                 </div>
                 <div>
                     <button className={c.addPost} onClick={addPost}>Add post</button>
