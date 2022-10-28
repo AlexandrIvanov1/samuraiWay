@@ -1,5 +1,3 @@
-import {rerenderEntireTree} from "../rerender";
-
 export type MessageType = {
     id: string
     message: string
@@ -33,7 +31,6 @@ export type RootStateType = {
     dialogsPage: DialogsPageType
     sidebar: Array<SidebarType>
 }
-
 
 export const state: RootStateType = {
     profilePage: {
@@ -71,22 +68,30 @@ export const addPost = (message: string) => {
     }
     state.profilePage.postsData.push(newPost)
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
 export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
 export const updateNewMessage = (newMessage: string) => {
     state.dialogsPage.newMessage = newMessage
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
 export const addNewMessage = (message: string) => {
     const newMessage: MessageType = {id: '5', message}
     state.dialogsPage.messagesData.push(newMessage)
     state.dialogsPage.newMessage = ''
-    rerenderEntireTree(state)
+    rerenderEntireTree()
+}
+
+let rerenderEntireTree = () => {
+    console.log('State changed!')
+}
+
+export const subscriber = (observe: () => void) => {
+    rerenderEntireTree = observe
 }
