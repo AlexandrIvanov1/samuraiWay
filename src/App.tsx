@@ -14,26 +14,34 @@ type AppType = {
     state: RootStateType
     addPost: (message: string) => void
     updateNewPostText: (newText: string) => void
+    updateNewMessage: (newMessage: string) => void
+    addNewMessage: (newMessage: string) => void
 }
 
 function App(props: AppType) {
     return (
-            <div className={'app-wrapper'}>
-                <Header/>
-                <Navbar state={props.state.sidebar}/>
-                <div className={'app-wrapper-content'}>
-                    <Route path={'/profile'} render={() => <Profile
+        <div className={'app-wrapper'}>
+            <Header/>
+            <Navbar state={props.state.sidebar}/>
+            <div className={'app-wrapper-content'}>
+                <Route path={'/profile'} render={() =>
+                    <Profile
                         profilePage={props.state.profilePage}
                         addPost={props.addPost}
                         newPostText={props.state.profilePage.newPostText}
                         updateNewPostText={props.updateNewPostText}
                     />}/>
-                    <Route path={'/dialogs'} render={() => <Dialogs state={props.state.dialogsPage}/>}/>
-                    <Route path={'/news'} render={() => <News/>}/>
-                    <Route path={'/music'} render={() => <Music/>}/>
-                    <Route path={'/settings'} render={() => <Settings/>}/>
-                </div>
+                <Route path={'/dialogs'} render={() =>
+                    <Dialogs
+                        state={props.state.dialogsPage}
+                        updateNewMessage={props.updateNewMessage}
+                        addNewMessage={props.addNewMessage}
+                    />}/>
+                <Route path={'/news'} render={() => <News/>}/>
+                <Route path={'/music'} render={() => <Music/>}/>
+                <Route path={'/settings'} render={() => <Settings/>}/>
             </div>
+        </div>
     );
 }
 

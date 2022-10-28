@@ -20,6 +20,7 @@ type ProfilePageType = {
 type DialogsPageType = {
     dialogsData: Array<DialogType>
     messagesData: Array<MessageType>
+    newMessage: string
 }
 export type SidebarType = {
     id: string
@@ -47,18 +48,19 @@ export const state: RootStateType = {
             {id: '1', name: 'Alex'},
             {id: '2', name: 'Alina'},
             {id: '3', name: 'Kirill'},
-            {id: '4', name: 'Denis'},
+            {id: '4', name: 'Denis'}
         ],
         messagesData: [
             {id: '1', message: 'Hello'},
             {id: '2', message: 'How are you?'},
             {id: '3', message: 'What are you doing today?'},
             {id: '4', message: 'Do you play at the bass?'}
-        ]
+        ],
+        newMessage: 'Hi'
     },
     sidebar: [
         {id: '1', name: 'Kirill', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'},
-        {id: '2', name: 'Denis', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'},
+        {id: '2', name: 'Denis', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'}
     ]
 }
 
@@ -74,5 +76,17 @@ export const addPost = (message: string) => {
 
 export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+
+export const updateNewMessage = (newMessage: string) => {
+    state.dialogsPage.newMessage = newMessage
+    rerenderEntireTree(state)
+}
+
+export const addNewMessage = (message: string) => {
+    const newMessage: MessageType = {id: '5', message}
+    state.dialogsPage.messagesData.push(newMessage)
+    state.dialogsPage.newMessage = ''
     rerenderEntireTree(state)
 }
