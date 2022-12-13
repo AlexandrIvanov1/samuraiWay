@@ -31,23 +31,54 @@ export type RootStateType = {
     sidebar: Array<SidebarType>
 }
 
-type AddPostActionType = {
-    type: 'ADD-POST'
-    message: string
+// type AddPostActionType = {
+//     type: 'ADD-POST'
+//     message: string
+// }
+// type UpdateNewPostTextActionType = {
+//     type: 'UPDATE-NEW-POST-TEXT'
+//     newText: string
+// }
+// type UpdateNewMessageActionType = {
+//     type : 'UPDATE-NEW-MESSAGE'
+//     newMessage: string
+// }
+// type AddNewMessageActionType = {
+//     type: 'ADD-NEW-MESSAGE'
+//     message: string
+// }
+
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> | ReturnType<typeof updateNewMessageAC> | ReturnType<typeof addNewMessageAC>
+
+export const addPostAC = (message: string) => {
+    return {
+        type: ADD_POST,
+        message: message
+    } as const
 }
-type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
+export const updateNewPostTextAC = (newText: string) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: newText
+    } as const
 }
-type UpdateNewMessageActionType = {
-    type : 'UPDATE-NEW-MESSAGE'
-    newMessage: string
+export const updateNewMessageAC = (newMessage: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE,
+        newMessage: newMessage
+    } as const
 }
-type AddNewMessageActionType = {
-    type: 'ADD-NEW-MESSAGE'
-    message: string
+export const addNewMessageAC = (message: string) => {
+    return {
+        type: ADD_NEW_MESSAGE,
+        message: message
+    } as const
 }
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType | UpdateNewMessageActionType | AddNewMessageActionType
 
 export type StoreType = {
     _state: RootStateType
@@ -83,7 +114,7 @@ export const store: StoreType = {
                 {id: '3', message: 'What are you doing today?'},
                 {id: '4', message: 'Do you play at the bass?'}
             ],
-            newMessage: 'Hi'
+            newMessage: ''
         },
         sidebar: [
             {
@@ -133,20 +164,20 @@ export const store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             const newPost: PostType = {
             id: '3', message: action.message, likesCount: 0
             }
             this._state.profilePage.postsData.push(newPost)
             this._state.profilePage.newPostText = ''
             this._callSubscriber()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber()
-        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
+        } else if (action.type === UPDATE_NEW_MESSAGE) {
             this._state.dialogsPage.newMessage = action.newMessage
             this._callSubscriber()
-        } else if (action.type === 'ADD-NEW-MESSAGE') {
+        } else if (action.type === ADD_NEW_MESSAGE) {
             const newMessage: MessageType = {id: '5', message: action.message}
             this._state.dialogsPage.messagesData.push(newMessage)
             this._state.dialogsPage.newMessage = ''

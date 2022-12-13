@@ -15,9 +15,7 @@ type DialogsType = {
 
 export function Dialogs(props: DialogsType) {
 
-    const sendMessage = () => {
-        props.dispatch({type: "ADD-NEW-MESSAGE", message: props.state.newMessage})
-    }
+    const sendMessage = () => props.dispatch({type: "ADD-NEW-MESSAGE", message: props.state.newMessage})
 
     const onChangeMessageHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.dispatch({type: "UPDATE-NEW-MESSAGE", newMessage: e.currentTarget.value})
@@ -33,7 +31,7 @@ export function Dialogs(props: DialogsType) {
             </div>
             <div className={c.addMessageBlock}>
                 <div>
-                    <textarea value={props.state.newMessage} onChange={onChangeMessageHandler}></textarea>
+                    <textarea placeholder={'Enter your message'} value={props.state.newMessage} onChange={onChangeMessageHandler}></textarea>
                 </div>
                 <div>
                     <button className={c.addMessage} onClick={sendMessage}>Send message</button>
