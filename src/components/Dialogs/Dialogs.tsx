@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import c from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
@@ -21,6 +21,12 @@ export function Dialogs(props: DialogsType) {
         props.dispatch({type: "UPDATE-NEW-MESSAGE", newMessage: e.currentTarget.value})
     }
 
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter') {
+            sendMessage()
+        }
+    }
+
     return (
         <div className={c.dialogs}>
             <div className={c.dialogsItem}>
@@ -31,7 +37,13 @@ export function Dialogs(props: DialogsType) {
             </div>
             <div className={c.addMessageBlock}>
                 <div>
-                    <textarea placeholder={'Enter your message'} value={props.state.newMessage} onChange={onChangeMessageHandler}></textarea>
+                    <textarea
+                        className={c.messageField}
+                        placeholder={'Enter your message'}
+                        value={props.state.newMessage}
+                        onChange={onChangeMessageHandler}
+                        onKeyPress={onKeyPressHandler}
+                    />
                 </div>
                 <div>
                     <button className={c.addMessage} onClick={sendMessage}>Send message</button>

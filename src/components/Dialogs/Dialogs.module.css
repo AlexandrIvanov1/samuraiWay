@@ -41,9 +41,16 @@
     padding: 10px;
 }
 
+.messageField {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+}
+
 .addMessage {
     width: 70px;
-    height: 35px;
+    height: 40px;
     cursor: pointer;
     border: 1px solid black;
     transition: all .4s;
@@ -53,5 +60,5 @@
     background-color: #7e57c2;
     border: 1px solid black;
     border-radius: 5px;
-
+    color: #fff;
 }

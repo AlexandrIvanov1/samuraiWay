@@ -30,30 +30,12 @@ export type RootStateType = {
     dialogsPage: DialogsPageType
     sidebar: Array<SidebarType>
 }
-
-// type AddPostActionType = {
-//     type: 'ADD-POST'
-//     message: string
-// }
-// type UpdateNewPostTextActionType = {
-//     type: 'UPDATE-NEW-POST-TEXT'
-//     newText: string
-// }
-// type UpdateNewMessageActionType = {
-//     type : 'UPDATE-NEW-MESSAGE'
-//     newMessage: string
-// }
-// type AddNewMessageActionType = {
-//     type: 'ADD-NEW-MESSAGE'
-//     message: string
-// }
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> | ReturnType<typeof updateNewMessageAC> | ReturnType<typeof addNewMessageAC>
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> | ReturnType<typeof updateNewMessageAC> | ReturnType<typeof addNewMessageAC>
 
 export const addPostAC = (message: string) => {
     return {
@@ -83,10 +65,6 @@ export const addNewMessageAC = (message: string) => {
 export type StoreType = {
     _state: RootStateType
     _callSubscriber: () => void
-    // addPost: (message: string) => void
-    // updateNewPostText: (newText: string) => void
-    // updateNewMessage: (newMessage: string) => void
-    // addNewMessage: (message: string) => void
     subscriber: (observe: () => void) => void
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
@@ -126,35 +104,17 @@ export const store: StoreType = {
                 id: '2',
                 name: 'Denis',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'
+            },
+            {
+                id: '3',
+                name: 'Sergey',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl9NbY6Ma2g-mgWMnuOlZNIdujeLFSUvSbZQ&usqp=CAU'
             }
         ]
     },
     _callSubscriber() {
         console.log('State changed!')
     },
-
-    // addPost(message: string) {
-    //     const newPost: PostType = {
-    //         id: '3', message, likesCount: 0
-    //     }
-    //     this._state.profilePage.postsData.push(newPost)
-    //     this._state.profilePage.newPostText = ''
-    //     this._callSubscriber()
-    // },
-    // updateNewPostText(newText: string) {
-    //     this._state.profilePage.newPostText = newText
-    //     this._callSubscriber()
-    // },
-    // updateNewMessage(newMessage: string) {
-    //     this._state.dialogsPage.newMessage = newMessage
-    //     this._callSubscriber()
-    // },
-    // addNewMessage(message: string) {
-    //     const newMessage: MessageType = {id: '5', message}
-    //     this._state.dialogsPage.messagesData.push(newMessage)
-    //     this._state.dialogsPage.newMessage = ''
-    //     this._callSubscriber()
-    // },
 
     subscriber(observe) {
         this._callSubscriber = observe
