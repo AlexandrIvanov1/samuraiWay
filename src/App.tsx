@@ -8,15 +8,11 @@ import {Route} from "react-router-dom";
 import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
-import {ActionsTypes, RootStateType} from "./redux/state";
+import {ActionsTypes, RootStateType} from "./redux/store";
 
 type AppType = {
     state: RootStateType
     dispatch: (action: ActionsTypes) => void
-    // addPost: (message: string) => void
-    // updateNewPostText: (newText: string) => void
-    // updateNewMessage: (newMessage: string) => void
-    // addNewMessage: (newMessage: string) => void
 }
 
 function App(props: AppType) {

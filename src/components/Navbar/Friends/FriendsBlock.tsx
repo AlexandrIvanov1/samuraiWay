@@ -1,6 +1,6 @@
 import React from 'react';
 import c from "./Friends.module.css";
-import {SidebarType} from "../../../redux/state";
+import {SidebarType} from "../../../redux/store";
 
 type FriendsBlockType = {
     sidebar: Array<SidebarType>
