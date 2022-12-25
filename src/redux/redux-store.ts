@@ -9,4 +9,6 @@ const reducers = combineReducers({
     sidebar: sidebarReducer
 })
 
-export const store = createStore(reducers)
+export const reduxStore = createStore(reducers)
+
+export type ReduxStoreType = typeof reduxStore

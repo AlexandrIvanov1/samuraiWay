@@ -7,15 +7,13 @@ type MyPostsContainerType = {
     // store: ReduxStoreType
 }
 
-export const MyPostsContainer: React.FC<MyPostsContainerType> = (props) => {
+export const MyPostsContainer: React.FC<MyPostsContainerType> = () => {
     return (
         <StoreContext.Consumer>
             {store => {
 
                 const state = store.getState()
-
                 const addPost = () => store.dispatch(addPostAC(state.profilePage.newPostText))
-
                 const onPostChangeHandler = (text: string) => {
                     store.dispatch(updateNewPostTextAC(text))
                 }

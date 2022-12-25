@@ -7,15 +7,12 @@ type DialogsContainerType = {
     // store: ReduxStoreType
 }
 
-export function DialogsContainer(props: DialogsContainerType) {
+export function DialogsContainer() {
     return (
         <StoreContext.Consumer>
             {store => {
-
                 const state = store.getState().dialogsPage
-
                 const sendMessage = () => store.dispatch(addNewMessageAC(state.newMessage))
-
                 const onChangeMessageHandler = (text: string) => {
                     store.dispatch(updateNewMessageAC(text))
                 }
