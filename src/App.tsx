@@ -8,20 +8,16 @@ import {Music} from "./components/Music/Music";
 import {News} from "./components/News/News";
 import {Settings} from "./components/Settings/Settings";
 import {DialogsContainer} from './components/Dialogs/DialogsContainer';
-import {ReduxStoreType} from './redux/redux-store';
 
 type AppType = {
-    store: ReduxStoreType
+    // store: ReduxStoreType
 }
 
-function App(props: AppType) {
-
-    const state = props.store.getState()
-
+function App() {
     return (
         <div className={'app-wrapper'}>
             <Header/>
-            <Navbar state={state.sidebar}/>
+            <Navbar/>
             <div className={'app-wrapper-content'}>
                 <Route path={'/profile'} render={() =>
                     <Profile />}/>
