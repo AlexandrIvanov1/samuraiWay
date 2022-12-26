@@ -2,13 +2,9 @@ import React, {ChangeEvent, KeyboardEvent} from 'react';
 import c from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsPageType} from '../../redux/store';
+import {MapDispatchToPropsType, MapStateToPropsType} from './DialogsContainer';
 
-type DialogsType = {
-    dialogsPage: DialogsPageType
-    updateNewMessage: (text: string) => void
-    addNewMessage: () => void
-}
+type DialogsType = MapStateToPropsType & MapDispatchToPropsType
 
 export function Dialogs(props: DialogsType) {
 

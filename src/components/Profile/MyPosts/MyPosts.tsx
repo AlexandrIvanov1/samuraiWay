@@ -1,16 +1,12 @@
 import React, {ChangeEvent} from 'react';
 import c from './MyPosts.module.css'
-import {Post} from "./Post/Post";
-import {PostType} from "../../../redux/store";
+import {Post} from './Post/Post';
+import {MapDispatchToPropsType, MapStateToPropsType} from './MyPostsContainer';
 
-type MyPostType = {
-    postsData: Array<PostType>
-    newPostText: string
-    updateNewPostText: (text: string) => void
-    addPost: () => void
-}
 
-export const MyPosts: React.FC<MyPostType> = (props) => {
+type MyPostType = MapStateToPropsType & MapDispatchToPropsType
+
+export const MyPosts = (props: MyPostType) => {
     const addPost = () => props.addPost()
 
     const onPostChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -34,7 +30,8 @@ export const MyPosts: React.FC<MyPostType> = (props) => {
             </div>
             <div className={c.posts}>
                 {props.postsData.map((p, i) => {
-                    return <Post key={i} id={p.id} message={p.message} likesCount={p.likesCount}/>})}
+                    return <Post key={i} id={p.id} message={p.message} likesCount={p.likesCount}/>
+                })}
             </div>
         </div>
     )
