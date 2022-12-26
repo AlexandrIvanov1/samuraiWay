@@ -1,7 +1,7 @@
 import React from 'react';
 import c from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
-import {FriendsBlock} from "./Friends/FriendsBlock";
+import {FriendsContainer} from './Friends/FriendsBlock';
 
 type NavbarType = {
     // state: Array<SidebarType>
@@ -25,7 +25,7 @@ export const Navbar: React.FC<NavbarType> = () => {
             <div className={c.item}>
                 <NavLink to={'/settings'} activeClassName={c.active}>Settings</NavLink>
             </div>
-            <FriendsBlock/>
+            <FriendsContainer/>
         </nav>
     )
 }
