@@ -1,9 +1,6 @@
 import React from 'react';
 import c from './Friends.module.css';
-import {connect} from 'react-redux';
-import {RootStateType, SidebarType} from '../../../redux/store';
-
-type FriendsBlockType = MapStateToPropsType & MapDispatchToPropsType
+import {FriendsBlockType} from './FriendsContainer';
 
 export const FriendsBlock: React.FC<FriendsBlockType> = (props) => {
     return (
@@ -24,23 +21,3 @@ export const FriendsBlock: React.FC<FriendsBlockType> = (props) => {
         </div>
     )
 };
-
-export type MapStateToPropsType = {
-    sidebar: Array<SidebarType>
-}
-export type MapDispatchToPropsType = {
-
-}
-
-const mapStateToProps = (state: RootStateType) => {
-    return {
-        sidebar: state.sidebar
-    }
-}
-const mapDispatchToProps = () => {
-    return {
-
-    }
-}
-
-export const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsBlock)

@@ -1,7 +1,7 @@
 import React from 'react';
 import c from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
-import {FriendsContainer} from './Friends/FriendsBlock';
+import {FriendsContainer} from './Friends/FriendsContainer';
 
 type NavbarType = {
     // state: Array<SidebarType>

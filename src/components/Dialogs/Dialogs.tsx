@@ -2,9 +2,8 @@ import React, {ChangeEvent, KeyboardEvent} from 'react';
 import c from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {MapDispatchToPropsType, MapStateToPropsType} from './DialogsContainer';
+import {DialogsType} from './DialogsContainer';
 
-type DialogsType = MapStateToPropsType & MapDispatchToPropsType
 
 export function Dialogs(props: DialogsType) {
 

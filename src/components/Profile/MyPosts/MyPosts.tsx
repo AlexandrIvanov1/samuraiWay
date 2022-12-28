@@ -1,10 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import c from './MyPosts.module.css'
 import {Post} from './Post/Post';
-import {MapDispatchToPropsType, MapStateToPropsType} from './MyPostsContainer';
+import {MyPostType} from './MyPostsContainer';
 
-
-type MyPostType = MapStateToPropsType & MapDispatchToPropsType
 
 export const MyPosts = (props: MyPostType) => {
     const addPost = () => props.addPost()

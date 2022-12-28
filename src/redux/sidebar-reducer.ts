@@ -1,6 +1,14 @@
-import {ActionsTypes, SidebarType} from './store';
+import {ActionsTypes} from './redux-store';
 
-const initialState: Array<SidebarType> = [
+export type SidebarType = {
+    id: string
+    name: string
+    avatar: string
+}
+
+type InitialStateType = Array<SidebarType>
+
+const initialState: InitialStateType = [
     {
         id: '1',
         name: 'Kirill',
@@ -18,7 +26,7 @@ const initialState: Array<SidebarType> = [
     }
 ]
 
-const sidebarReducer = (state = initialState, action: ActionsTypes) => {
+const sidebarReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     return state
 }
 export default sidebarReducer;
