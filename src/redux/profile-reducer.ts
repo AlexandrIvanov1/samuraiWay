@@ -1,7 +1,7 @@
-import {ActionsTypes} from "./redux-store";
+import {ActionsTypes} from './redux-store';
 
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 export type PostType = {
     id: string
@@ -21,20 +21,24 @@ const initialState: ProfilePageType = {
     newPostText: 'IT-Incubator!'
 }
 
- const profileReducer = (state = initialState, action: ActionsTypes): ProfilePageType => {
-     switch (action.type) {
-         case ADD_POST:
-             const newPost: PostType = { id: '3', message: state.newPostText, likesCount: 0 }
-             state.postsData.push(newPost)
-             state.newPostText = ''
-             return state;
-         case UPDATE_NEW_POST_TEXT:
-             state.newPostText = action.newText
-             return state;
-         default:
-             return state;
-     }
- }
+const profileReducer = (state = initialState, action: ActionsTypes): ProfilePageType => {
+    switch (action.type) {
+        case ADD_POST:
+            const newPost: PostType = {id: '3', message: state.newPostText, likesCount: 0}
+            return {
+                ...state,
+                postsData: [...state.postsData, newPost],
+                newPostText: ''
+            }
+        case UPDATE_NEW_POST_TEXT:
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+        default:
+            return state;
+    }
+}
 
 export const addPostAC = () => {
     return {

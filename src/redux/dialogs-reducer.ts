@@ -1,4 +1,4 @@
-import {ActionsTypes} from "./redux-store";
+import {ActionsTypes} from './redux-store';
 
 const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
@@ -36,13 +36,16 @@ const initialState: DialogsPageType = {
 const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsPageType => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE:
-            state.newMessage = action.newMessage
-            return state;
+            return {
+                ...state,
+                newMessage: action.newMessage
+            }
         case ADD_NEW_MESSAGE:
-            const newMessage: MessageType = {id: '5', message: state.newMessage}
-            state.messagesData.push(newMessage)
-            state.newMessage = ''
-            return state;
+            return {
+                ...state,
+                messagesData: [...state.messagesData, {id: '5', message: state.newMessage}],
+                newMessage: ''
+            }
         default:
             return state;
     }
