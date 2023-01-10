@@ -42,3 +42,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.page {
+    cursor: pointer;
+}
+
+.selectedPage {
+    cursor: pointer;
+    font-weight: bold;
+}
