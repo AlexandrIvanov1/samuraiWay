@@ -12,9 +12,7 @@ type UsersPropsType = UsersType
 
 export class Users extends React.Component<UsersPropsType, OwnPropsType> {
 
-    constructor(props: any) {
-        super(props);
-
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => {
                 this.props.setUsers(response.data.items)
@@ -26,27 +24,23 @@ export class Users extends React.Component<UsersPropsType, OwnPropsType> {
             <div>
                 {this.props.users.map(u => {
                     return (
-                        <div key={u.id}>
-                            <div>
-                                <div>
-                                    <img
-                                        className={s.avatar}
-                                        alt={'avatar'}
-                                        src={u.photos.small ? u.photos.small : userPhoto}
-                                    />
-                                    <div>
-                                        {u.followed
-                                            ? <button onClick={() => this.props.unfollow(u.id)}>Unfollowed</button>
-                                            : <button onClick={() => this.props.follow(u.id)}>Followed</button>}
-                                    </div>
-                                </div>
+                        <div key={u.id} className={s.wrapper}>
+                            <div className={s.photoWrapper}>
+                                <img
+                                    className={s.avatar}
+                                    alt={'avatar'}
+                                    src={u.photos.small ? u.photos.small : userPhoto}
+                                />
+                                    {u.followed
+                                        ? <button onClick={() => this.props.unfollow(u.id)}>Unfollowed</button>
+                                        : <button onClick={() => this.props.follow(u.id)}>Followed</button>}
                             </div>
-                            <div>
-                                <div>
+                            <div className={s.information}>
+                                <div className={s.leftColumn}>
                                     <div>{u.name}</div>
-                                    <div>{u.status}</div>
+                                    <div>{u.status ? u.status : 'Hello everyone'}</div>
                                 </div>
-                                <div>
+                                <div className={s.rightColumn}>
                                     <div>{'u.location.country'}</div>
                                     <div>{'u.location.city'}</div>
                                 </div>
